@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { motion } from 'framer-motion';
 import GalleryImage from './GalleryImage';
@@ -8,7 +7,7 @@ function GaleriaProyectos({ backgroundProps }) {
     { src: 'https://images.unsplash.com/photo-1602499199350-fe0651758979', alt: 'Planta de reciclaje', description: 'Línea mecanizada en operación' },
     { src: 'https://images.unsplash.com/photo-1626178789615-38b80689d33a', alt: 'Infraestructura', description: 'Vista aérea' },
     { src: 'https://images.unsplash.com/photo-1567516847971-81df16eefa90', alt: 'Instalaciones', description: 'Equipamiento' },
-    { src: 'https://images.unsplash.com/photo-1589839591369-348e67364223', alt: 'Tecnología', description: 'Sistemas de monitoreo' }
+    { src: 'https://ugbloftsagwooagofixk.supabase.co/storage/v1/object/public/site_assets/uploads/quienes-somos-1783122431223.jpg', alt: 'Tecnología', description: 'Sistemas de monitoreo' }
   ];
   
   return (

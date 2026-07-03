@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { motion } from 'framer-motion';
 
@@ -52,7 +51,7 @@ function QuienesSomos({ backgroundProps }) {
           >
             <div className="absolute -inset-4 bg-gradient-to-r from-primary/20 to-transparent rounded-2xl blur-xl" />
             <img
-              src="https://images.unsplash.com/photo-1589839591369-348e67364223"
+              src="https://ugbloftsagwooagofixk.supabase.co/storage/v1/object/public/site_assets/uploads/quienes-somos-1783122431223.jpg"
               alt="Infraestructura ambiental moderna"
               className="relative rounded-2xl shadow-2xl w-full h-[500px] object-cover border-2 border-primary/30"
             />
