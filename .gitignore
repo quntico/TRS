@@ -1,0 +1,43 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Node modules
+node_modules/
+**/node_modules/
+
+# Build outputs
+dist/
+**/dist/
+.svelte-kit
+.next
+.nuxt
+out/
+build/
+
+# Local env files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+*.env*
+
+# PocketBase binaries and database temporary files
+apps/pocketbase/pocketbase
+apps/pocketbase/pocketbase.exe
+apps/pocketbase/pb_data/*.db-shm
+apps/pocketbase/pb_data/*.db-wal
+apps/pocketbase/pb_data/data.db.bak
+apps/pocketbase/reset_settings.py
+
+# Editor folders and OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

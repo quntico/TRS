@@ -1,0 +1,14 @@
+{
+	"name": "pocketbase-app",
+	"type": "module",
+	"version": "0.0.0",
+	"private": true,
+	"scripts": {
+		"dev": "node pocketbase.js serve --http=0.0.0.0:8090 --hooksWatch=false",
+		"start": "node pocketbase.js serve --http=0.0.0.0:8090 --dir=/data --migrationsDir=./pb_migrations --hooksDir=./pb_hooks --hooksWatch=false",
+		"migrations:up": "node pocketbase.js horizons migrations:up --dir=./pb_data --migrationsDir=./pb_migrations --hooksDir=./pb_hooks --hooksWatch=false",
+		"migrations:revert": "node pocketbase.js horizons migrations:revert --dir=./pb_data --migrationsDir=./pb_migrations --hooksDir=./pb_hooks --hooksWatch=false",
+		"migrations:snapshot": "mkdir -p ./pb_snapshots && echo 'y' | node pocketbase.js migrate collections --dir=./pb_data --migrationsDir=./pb_snapshots",
+		"update": "node pocketbase.js update --backup=0"
+	}
+}
