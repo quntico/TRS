@@ -53,12 +53,12 @@ function Navbar() {
           <a 
             href="#inicio" 
             onClick={(e) => { e.preventDefault(); scrollToSection('#inicio'); }}
-            className="flex items-center gap-2"
+            className="flex items-center gap-2 ml-[50px]"
           >
             {config?.logo_url ? (
-              <img src={config.logo_url} alt="Grupo TRS Logo" className="h-12 object-contain" />
+              <img src={config.logo_url} alt="Grupo TRS Logo" className="object-contain" style={{ height: '72px' }} />
             ) : (
-              <img src="/logo.png" alt="Grupo TRS Logo" className="h-14 object-contain" />
+              <img src="/logo.png" alt="Grupo TRS Logo" className="object-contain" style={{ height: '76px' }} />
             )}
           </a>
           
