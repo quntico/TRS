@@ -56,11 +56,9 @@ function Navbar() {
             className="flex items-center gap-2"
           >
             {config?.logo_url ? (
-              <img src={config.logo_url} alt="Grupo TRS Logo" className="h-10 object-contain" />
+              <img src={config.logo_url} alt="Grupo TRS Logo" className="h-12 object-contain" />
             ) : (
-              <span className="text-2xl font-bold">
-                Grupo <span className="text-primary">TRS</span>
-              </span>
+              <img src="/logo.png" alt="Grupo TRS Logo" className="h-14 object-contain" />
             )}
           </a>
           

@@ -1,18 +1,20 @@
 
 import React from 'react';
-import { Recycle } from 'lucide-react';
+import { useSiteConfig } from '@/hooks/useSiteConfig';
 
 function Footer() {
+  const { config } = useSiteConfig();
+
   return (
     <footer className="bg-background border-t border-border py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="flex items-center gap-3">
-            <Recycle className="w-8 h-8 text-primary" />
-            <div>
-              <div className="text-xl font-bold">Grupo TRS</div>
-              <div className="text-sm text-muted-foreground">Evolución Sustentable</div>
-            </div>
+            {config?.logo_url ? (
+              <img src={config.logo_url} alt="Grupo TRS Logo" className="h-10 object-contain" />
+            ) : (
+              <img src="/logo.png" alt="Grupo TRS Logo" className="h-12 object-contain" />
+            )}
           </div>
           
           <div className="flex flex-wrap items-center justify-center gap-6 text-sm text-muted-foreground">
