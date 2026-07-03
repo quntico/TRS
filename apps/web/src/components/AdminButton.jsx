@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Settings } from 'lucide-react';
 import { useAdminAuth } from '@/hooks/useAdminAuth';
@@ -20,7 +19,14 @@ export default function AdminButton() {
         {isAuthenticated && <span className="w-2 h-2 rounded-full bg-[#B6F21A] ml-1" />}
       </button>
 
-      {isOpen && <AdminDashboard onClose={() => setIsOpen(false)} />}
+      {isOpen && (
+        <AdminDashboard 
+          onClose={() => {
+            setIsOpen(false);
+            window.location.reload();
+          }} 
+        />
+      )}
     </>
   );
 }
