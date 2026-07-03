@@ -4,6 +4,7 @@ import { UploadCloud, X, Link as LinkIcon } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { toast } from 'sonner';
+import { supabase } from '@/lib/supabaseClient';
 
 export default function FileUploader({ onUpload, acceptsVideo = true }) {
   const [dragActive, setDragActive] = useState(false);
@@ -44,26 +45,56 @@ export default function FileUploader({ onUpload, acceptsVideo = true }) {
     }, 100);
 
     try {
-      // Read file as Base64 data URL
-      const reader = new FileReader();
-      reader.readAsDataURL(file);
-      reader.onload = () => {
-        clearInterval(interval);
-        setProgress(100);
-        setTimeout(() => {
-          onUpload(reader.result, isVideo ? 'video' : 'image');
-          setUploading(false);
-        }, 500);
-      };
-      reader.onerror = () => {
-        clearInterval(interval);
+      const bucket = 'site_assets';
+      const fileExt = file.name.split('.').pop();
+      const fileName = `${Date.now()}-${Math.random().toString(36).substring(2, 9)}.${fileExt}`;
+      const filePath = `uploads/${fileName}`;
+
+      // Upload to Supabase Storage
+      const { data, error } = await supabase.storage
+        .from(bucket)
+        .upload(filePath, file, {
+          cacheControl: '3600',
+          upsert: true,
+          contentType: file.type
+        });
+
+      if (error) {
+        console.error('Supabase storage upload error:', error);
+        throw error;
+      }
+
+      // Get public URL
+      const { data: { publicUrl } } = supabase.storage
+        .from(bucket)
+        .getPublicUrl(filePath);
+
+      clearInterval(interval);
+      setProgress(100);
+      setTimeout(() => {
+        onUpload(publicUrl, isVideo ? 'video' : 'image');
         setUploading(false);
-        toast.error('Failed to read file.');
-      };
+      }, 500);
     } catch (err) {
       clearInterval(interval);
       setUploading(false);
-      toast.error('Upload failed.');
+      console.error('Upload failed, attempting Base64 fallback', err);
+      toast.error('Error al subir a Supabase. Guardando localmente...');
+      
+      // Fallback to Base64 to not block the UI completely
+      try {
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = () => {
+          setProgress(100);
+          setTimeout(() => {
+            onUpload(reader.result, isVideo ? 'video' : 'image');
+            toast.warning('Guardado localmente como Base64 (puede fallar al guardar en base de datos si el archivo es grande).');
+          }, 500);
+        };
+      } catch (fallbackErr) {
+        toast.error('Fallo total de la subida.');
+      }
     }
   };
 
