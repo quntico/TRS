@@ -46,7 +46,10 @@ function Hero({ backgroundProps }) {
             className="w-full h-full object-cover"
           />
         )}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/70 to-black/90" />
+        <div 
+          className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/70 to-black/90" 
+          style={{ opacity: (backgroundProps?.hero_opacity !== undefined ? backgroundProps.hero_opacity : 80) / 100 }}
+        />
         <div className="absolute inset-0 grid-pattern opacity-30" />
       </div>
       

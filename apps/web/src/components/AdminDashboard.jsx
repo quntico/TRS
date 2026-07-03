@@ -17,9 +17,9 @@ export default function AdminDashboard({ onClose }) {
   }
 
   const tabs = [
-    { id: 'logo', label: 'Logo Management', icon: ImageIcon },
-    { id: 'hero', label: 'Hero Section', icon: LayoutDashboard },
-    { id: 'sections', label: 'Section Backgrounds', icon: Layers },
+    { id: 'logo', label: 'Gestión de Logos', icon: ImageIcon },
+    { id: 'hero', label: 'Sección del Hero', icon: LayoutDashboard },
+    { id: 'sections', label: 'Fondos de Secciones', icon: Layers },
   ];
 
   return (
@@ -30,11 +30,11 @@ export default function AdminDashboard({ onClose }) {
         </div>
         <div className="flex items-center gap-4">
           <Button variant="ghost" className="text-gray-400 hover:text-white" onClick={onClose}>
-            Back to Site
+            Volver al Sitio
           </Button>
           <Button variant="outline" className="border-gray-700 text-white hover:bg-gray-800" onClick={logout}>
             <LogOut className="w-4 h-4 mr-2" />
-            Logout
+            Cerrar Sesión
           </Button>
         </div>
       </header>

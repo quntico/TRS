@@ -14,18 +14,18 @@ export default function SectionBackgroundManager({ sectionName }) {
   const handleUpload = async (url, type) => {
     try {
       await updateBackground(sectionName, { media_url: url, media_type: type, opacity: localOpacity });
-      toast.success(`${sectionName} background updated`);
+      toast.success(`Fondo de ${sectionName} actualizado`);
     } catch (err) {
-      toast.error('Update failed');
+      toast.error('Error al actualizar');
     }
   };
 
   const handleDelete = async () => {
     try {
       await deleteBackground(sectionName);
-      toast.success(`${sectionName} background removed`);
+      toast.success(`Fondo de ${sectionName} eliminado`);
     } catch (err) {
-      toast.error('Failed to remove');
+      toast.error('Error al eliminar');
     }
   };
 
@@ -54,16 +54,18 @@ export default function SectionBackgroundManager({ sectionName }) {
               )}
             </div>
             <div className="absolute inset-0 z-10 flex items-center justify-center p-4">
-              <span className="text-white font-bold text-shadow bg-black/30 px-2 py-1 rounded">Preview Content</span>
+              <span className="text-white font-bold text-shadow bg-black/30 px-2 py-1 rounded">Vista Previa</span>
             </div>
             <div className="absolute top-2 right-2 z-20">
-              <Button variant="destructive" size="sm" onClick={handleDelete}>Remove</Button>
+              <Button variant="destructive" size="sm" className="bg-red-600 hover:bg-red-700 text-white" onClick={handleDelete}>
+                Eliminar
+              </Button>
             </div>
           </div>
           
           <div>
             <div className="flex justify-between text-sm mb-2 text-gray-400">
-              <span>Background Opacity</span>
+              <span>Opacidad del Fondo</span>
               <span>{localOpacity}%</span>
             </div>
             <Slider
@@ -77,7 +79,7 @@ export default function SectionBackgroundManager({ sectionName }) {
           </div>
         </div>
       ) : (
-        <p className="text-muted-foreground mb-4 text-sm">No custom background applied.</p>
+        <p className="text-muted-foreground mb-4 text-sm">Sin fondo personalizado (usando predeterminado).</p>
       )}
 
       <FileUploader onUpload={handleUpload} acceptsVideo={true} />

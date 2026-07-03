@@ -11,18 +11,18 @@ export default function LogoManager() {
   const handleUpload = async (url) => {
     try {
       await updateConfig({ logo_url: url });
-      toast.success('Logo updated successfully');
+      toast.success('Logo actualizado con éxito');
     } catch (err) {
-      toast.error('Failed to update logo');
+      toast.error('Error al actualizar el logo');
     }
   };
 
   const handleDelete = async () => {
     try {
       await updateConfig({ logo_url: '' });
-      toast.success('Logo removed');
+      toast.success('Logo eliminado');
     } catch (err) {
-      toast.error('Failed to remove logo');
+      toast.error('Error al eliminar el logo');
     }
   };
 
@@ -30,17 +30,19 @@ export default function LogoManager() {
 
   return (
     <div className="bg-[#1B1B1B] p-6 rounded-2xl border border-gray-800">
-      <h3 className="text-xl font-semibold mb-4 text-white">Site Logo</h3>
+      <h3 className="text-xl font-semibold mb-4 text-white">Logo del Sitio</h3>
       
       {config?.logo_url ? (
         <div className="mb-6 bg-black/40 p-4 rounded-xl inline-block border border-gray-800">
-          <img src={config.logo_url} alt="Site Logo" className="h-16 object-contain" />
+          <img src={config.logo_url} alt="Logo del Sitio" className="h-16 object-contain" />
           <div className="mt-4">
-            <Button variant="destructive" size="sm" onClick={handleDelete}>Remove Logo</Button>
+            <Button variant="destructive" size="sm" className="bg-red-600 hover:bg-red-700 text-white" onClick={handleDelete}>
+              Eliminar Logo
+            </Button>
           </div>
         </div>
       ) : (
-        <p className="text-muted-foreground mb-4">No logo configured. Using default text logo.</p>
+        <p className="text-muted-foreground mb-4">No hay logo configurado. Usando logo de texto predeterminado.</p>
       )}
 
       <FileUploader onUpload={handleUpload} acceptsVideo={false} />

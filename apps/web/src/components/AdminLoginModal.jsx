@@ -17,7 +17,7 @@ export default function AdminLoginModal({ onClose }) {
       setError('');
       if (onClose) onClose();
     } else {
-      setError('Invalid password');
+      setError('Contraseña incorrecta');
     }
   };
 
@@ -30,14 +30,14 @@ export default function AdminLoginModal({ onClose }) {
           </button>
         )}
         
-        <h2 className="text-2xl font-bold mb-2 text-white">Admin Access</h2>
-        <p className="text-muted-foreground mb-6">Enter your password to access the dashboard.</p>
+        <h2 className="text-2xl font-bold mb-2 text-white">Acceso Admin</h2>
+        <p className="text-muted-foreground mb-6">Ingresa la contraseña del panel de edición.</p>
         
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
             <Input
               type="password"
-              placeholder="Password"
+              placeholder="Contraseña"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               className="bg-black/50 border-gray-700 text-white"
@@ -46,7 +46,7 @@ export default function AdminLoginModal({ onClose }) {
           </div>
           
           <Button type="submit" className="w-full bg-[#B6F21A] hover:bg-[#B6F21A]/90 text-black font-bold">
-            Login
+            Ingresar
           </Button>
         </form>
       </div>
