@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import Navbar from '../components/Navbar';
@@ -12,7 +11,6 @@ import VeoliaSection from '../components/VeoliaSection';
 import SmqSection from '../components/SmqSection';
 import Alianzas from '../components/Alianzas';
 import CompromisoSocial from '../components/CompromisoSocial';
-import GaleriaProyectos from '../components/GaleriaProyectos';
 import Contacto from '../components/Contacto';
 import Footer from '../components/Footer';
 import { Toaster } from '@/components/ui/sonner';
@@ -50,7 +48,6 @@ function HomePage() {
         <SmqSection backgroundProps={getBackgroundForSection('SMQ')} />
         <Alianzas backgroundProps={getBackgroundForSection('Alianzas')} />
         <CompromisoSocial backgroundProps={getBackgroundForSection('Compromiso Social')} />
-        <GaleriaProyectos backgroundProps={getBackgroundForSection('Galería Cancún')} />
         <Contacto backgroundProps={getBackgroundForSection('Contacto')} />
         <Footer />
         <Toaster />
