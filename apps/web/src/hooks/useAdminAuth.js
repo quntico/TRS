@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import pb from '@/lib/pocketbaseClient';
 
@@ -6,7 +5,9 @@ export function useAdminAuth() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   useEffect(() => {
-    setIsAuthenticated(localStorage.getItem('adminAuth') === 'true');
+    // Force logout on reload by clearing PocketBase auth store and React state
+    pb.authStore.clear();
+    setIsAuthenticated(false);
   }, []);
 
   const login = async (password) => {
@@ -27,7 +28,6 @@ export function useAdminAuth() {
           console.error("Failed to setup PB auth", e);
         }
       }
-      localStorage.setItem('adminAuth', 'true');
       setIsAuthenticated(true);
       return true;
     }
@@ -36,7 +36,6 @@ export function useAdminAuth() {
 
   const logout = () => {
     pb.authStore.clear();
-    localStorage.removeItem('adminAuth');
     setIsAuthenticated(false);
   };
 
