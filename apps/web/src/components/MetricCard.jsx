@@ -1,11 +1,10 @@
-
 import React, { useEffect, useRef, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
 
-function MetricCard({ value, label, icon: Icon, suffix = '', duration = 2 }) {
+function MetricCard({ value, label, icon: Icon, suffix = '', duration = 2, index = 0 }) {
   const [count, setCount] = useState(0);
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true });
+  const isInView = useInView(ref, { once: true, margin: "-50px" });
   
   useEffect(() => {
     if (!isInView) return;
@@ -30,18 +29,25 @@ function MetricCard({ value, label, icon: Icon, suffix = '', duration = 2 }) {
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, y: 20 }}
-      animate={isInView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.5 }}
-      className="glassmorphism rounded-2xl p-8 hover:green-glow transition-all duration-300 group"
+      initial={{ opacity: 0, y: 40, scale: 0.9 }}
+      animate={isInView ? { opacity: 1, y: 0, scale: 1 } : {}}
+      whileHover={{ scale: 1.05, y: -8 }}
+      whileTap={{ scale: 0.98 }}
+      transition={{ 
+        type: "spring",
+        stiffness: 100,
+        damping: 15,
+        delay: index * 0.1 
+      }}
+      className="glassmorphism rounded-2xl p-8 hover:green-glow transition-all duration-300 group flex flex-col items-center text-center cursor-pointer"
     >
       {Icon && (
-        <Icon className="w-12 h-12 text-primary mb-4 group-hover:scale-110 transition-transform duration-300" />
+        <Icon className="w-12 h-12 text-primary mb-4 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300" />
       )}
-      <div className="text-5xl font-bold text-primary mb-2">
+      <div className="text-5xl font-bold text-primary mb-2 tracking-tight">
         {count}{suffix}
       </div>
-      <div className="text-lg text-muted-foreground font-medium">{label}</div>
+      <div className="text-lg text-muted-foreground font-medium leading-snug">{label}</div>
     </motion.div>
   );
 }

@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Calendar, Building2, Users, MapPin } from 'lucide-react';
@@ -50,6 +49,7 @@ function CifrasSection({ backgroundProps }) {
               label={metric.label}
               icon={metric.icon}
               suffix={metric.suffix}
+              index={index}
             />
           ))}
         </div>
