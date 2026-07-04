@@ -13,6 +13,7 @@ import Alianzas from '../components/Alianzas';
 import CompromisoSocial from '../components/CompromisoSocial';
 import Contacto from '../components/Contacto';
 import Footer from '../components/Footer';
+import ScrollToTop from '../components/ScrollToTop';
 import { Toaster } from '@/components/ui/sonner';
 
 import { useSiteConfig } from '@/hooks/useSiteConfig';
@@ -50,6 +51,7 @@ function HomePage() {
         <CompromisoSocial backgroundProps={getBackgroundForSection('Compromiso Social')} />
         <Contacto backgroundProps={getBackgroundForSection('Contacto')} />
         <Footer />
+        <ScrollToTop />
         <Toaster />
       </div>
     </>
