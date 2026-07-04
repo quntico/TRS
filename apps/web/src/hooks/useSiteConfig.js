@@ -1,10 +1,16 @@
-
 import { useState, useEffect } from 'react';
 import { supabase } from '@/lib/supabaseClient';
 
 export function useSiteConfig() {
-  const [config, setConfig] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [config, setConfig] = useState(() => {
+    try {
+      const local = localStorage.getItem('trs_site_config');
+      return local ? JSON.parse(local) : null;
+    } catch (error) {
+      return null;
+    }
+  });
+  const [loading, setLoading] = useState(!config);
 
   const fetchConfig = async () => {
     try {
@@ -16,14 +22,12 @@ export function useSiteConfig() {
 
       if (error) {
         console.error('Failed to fetch site config from Supabase', error);
-        // Fallback to local storage config to prevent crash if table doesn't exist yet
         const local = localStorage.getItem('trs_site_config');
         if (local) setConfig(JSON.parse(local));
       } else if (data && data.length > 0) {
         setConfig(data[0]);
         localStorage.setItem('trs_site_config', JSON.stringify(data[0]));
       } else {
-        // Create initial config row
         const { data: newConfig, error: createError } = await supabase
           .from('site_config')
           .insert({
@@ -80,7 +84,6 @@ export function useSiteConfig() {
       }
     } catch (error) {
       console.error('Failed to update config in Supabase', error);
-      // Temporary local fallback
       const updatedLocal = { ...config, ...data };
       setConfig(updatedLocal);
       localStorage.setItem('trs_site_config', JSON.stringify(updatedLocal));

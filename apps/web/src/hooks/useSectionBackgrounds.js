@@ -1,10 +1,16 @@
-
 import { useState, useEffect } from 'react';
 import { supabase } from '@/lib/supabaseClient';
 
 export function useSectionBackgrounds() {
-  const [backgrounds, setBackgrounds] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [backgrounds, setBackgrounds] = useState(() => {
+    try {
+      const local = localStorage.getItem('trs_section_backgrounds');
+      return local ? JSON.parse(local) : [];
+    } catch (error) {
+      return [];
+    }
+  });
+  const [loading, setLoading] = useState(backgrounds.length === 0);
 
   const fetchBackgrounds = async () => {
     try {
@@ -64,7 +70,6 @@ export function useSectionBackgrounds() {
       return result;
     } catch (error) {
       console.error('Failed to update background in Supabase', error);
-      // Local fallback
       const existing = getBackgroundForSection(sectionName);
       let updatedBackgrounds;
       if (existing) {
