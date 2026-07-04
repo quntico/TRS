@@ -22,28 +22,53 @@ function ContactForm() {
     });
   };
   
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    setTimeout(() => {
-      localStorage.setItem('contactForm', JSON.stringify({
-        ...formData,
-        timestamp: new Date().toISOString()
-      }));
-      
-      toast.success('Mensaje enviado correctamente');
-      
-      setFormData({
-        nombre: '',
-        empresa: '',
-        correo: '',
-        telefono: '',
-        mensaje: ''
+    try {
+      const response = await fetch("https://formsubmit.co/ajax/delavega3540@gmail.com", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        body: JSON.stringify({
+          Nombre: formData.nombre,
+          Empresa: formData.empresa || "No especificada",
+          "Correo Electrónico": formData.correo,
+          Teléfono: formData.telefono || "No especificado",
+          Mensaje: formData.mensaje,
+          _subject: "Nuevo Mensaje de Contacto - Grupo TRS"
+        })
       });
+      
+      if (response.ok) {
+        toast.success('Mensaje enviado correctamente');
+        
+        localStorage.setItem('contactForm', JSON.stringify({
+          ...formData,
+          timestamp: new Date().toISOString()
+        }));
+        
+        setFormData({
+          nombre: '',
+          empresa: '',
+          correo: '',
+          telefono: '',
+          mensaje: ''
+        });
+      } else {
+        throw new Error('FormSubmit API response was not OK');
+      }
+    } catch (error) {
+      console.error('Error submitting contact form:', error);
+      toast.error('Error al enviar el mensaje. Intente de nuevo.');
+    } finally {
       setIsSubmitting(false);
-    }, 1000);
+    }
   };
+
   
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
