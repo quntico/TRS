@@ -1,19 +1,13 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import LazyBackground from './LazyBackground';
 
 function QuienesSomos({ backgroundProps }) {
   return (
     <section id="quienes-somos" className="relative py-24 bg-card overflow-hidden">
-      {backgroundProps?.media_url && (
-        <div className="absolute inset-0 z-0 pointer-events-none" style={{ opacity: (backgroundProps.opacity ?? 100) / 100 }}>
-          {backgroundProps.media_type === 'video' ? (
-            <video src={backgroundProps.media_url} autoPlay loop muted playsInline className="w-full h-full object-cover" />
-          ) : (
-            <img src={backgroundProps.media_url} alt="Background" className="w-full h-full object-cover" />
-          )}
-          <div className="absolute inset-0 bg-card/80 backdrop-blur-sm" />
-        </div>
-      )}
+      <LazyBackground backgroundProps={backgroundProps}>
+        <div className="absolute inset-0 bg-card/80 backdrop-blur-sm" />
+      </LazyBackground>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -53,6 +47,7 @@ function QuienesSomos({ backgroundProps }) {
             <img
               src="https://ugbloftsagwooagofixk.supabase.co/storage/v1/object/public/site_assets/uploads/quienes-somos-1783122431223.jpg"
               alt="Infraestructura ambiental moderna"
+              loading="lazy"
               className="relative rounded-2xl shadow-2xl w-full h-[500px] object-cover border-2 border-primary/30"
             />
           </motion.div>

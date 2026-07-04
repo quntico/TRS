@@ -1,7 +1,7 @@
-
 import React from 'react';
 import { motion } from 'framer-motion';
 import TimelineItem from './TimelineItem';
+import LazyBackground from './LazyBackground';
 
 function Timeline({ backgroundProps }) {
   const milestones = [
@@ -15,16 +15,9 @@ function Timeline({ backgroundProps }) {
   
   return (
     <section id="trayectoria" className="relative py-24 bg-card overflow-hidden">
-      {backgroundProps?.media_url && (
-        <div className="absolute inset-0 z-0 pointer-events-none" style={{ opacity: (backgroundProps.opacity ?? 100) / 100 }}>
-          {backgroundProps.media_type === 'video' ? (
-            <video src={backgroundProps.media_url} autoPlay loop muted playsInline className="w-full h-full object-cover" />
-          ) : (
-            <img src={backgroundProps.media_url} alt="Background" className="w-full h-full object-cover" />
-          )}
-          <div className="absolute inset-0 bg-card/90" />
-        </div>
-      )}
+      <LazyBackground backgroundProps={backgroundProps}>
+        <div className="absolute inset-0 bg-card/90" />
+      </LazyBackground>
 
       <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div

@@ -1,7 +1,7 @@
-
 import React from 'react';
 import { motion } from 'framer-motion';
 import ProjectCard from './ProjectCard';
+import LazyBackground from './LazyBackground';
 
 function Portfolio({ backgroundProps }) {
   const projects = [
@@ -16,16 +16,9 @@ function Portfolio({ backgroundProps }) {
   
   return (
     <section id="proyectos" className="relative py-24 bg-card overflow-hidden">
-      {backgroundProps?.media_url && (
-        <div className="absolute inset-0 z-0 pointer-events-none" style={{ opacity: (backgroundProps.opacity ?? 100) / 100 }}>
-          {backgroundProps.media_type === 'video' ? (
-            <video src={backgroundProps.media_url} autoPlay loop muted playsInline className="w-full h-full object-cover" />
-          ) : (
-            <img src={backgroundProps.media_url} alt="Background" className="w-full h-full object-cover" />
-          )}
-          <div className="absolute inset-0 bg-card/85" />
-        </div>
-      )}
+      <LazyBackground backgroundProps={backgroundProps}>
+        <div className="absolute inset-0 bg-card/85" />
+      </LazyBackground>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
@@ -60,17 +53,17 @@ function Portfolio({ backgroundProps }) {
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.05 }}
-                  className="border-b border-border hover:bg-background/50 transition-colors"
+                  transition={{ duration: 0.4, delay: index * 0.05 }}
+                  className="border-b border-border hover:bg-white/5 transition-colors duration-150"
                 >
-                  <td className="px-6 py-4 font-semibold">{project.location}</td>
+                  <td className="px-6 py-4 font-bold text-white">{project.location}</td>
                   <td className="px-6 py-4 text-muted-foreground">{project.description}</td>
-                  <td className="px-6 py-4 text-sm">{project.scope}</td>
+                  <td className="px-6 py-4 text-primary font-medium">{project.scope}</td>
                   <td className="px-6 py-4">
-                    <span className={`inline-block px-3 py-1 rounded-full text-sm font-medium ${
-                      project.status === 'Operando' ? 'bg-primary/10 text-primary' :
-                      project.status === 'Completado' ? 'bg-muted/20 text-muted-foreground' :
-                      'bg-blue-500/10 text-blue-400'
+                    <span className={`inline-block px-3 py-1 rounded-full text-xs font-semibold ${
+                      project.status === 'Operando' ? 'bg-green-500/10 text-green-400 border border-green-500/20' :
+                      project.status === 'En construcción' ? 'bg-amber-500/10 text-amber-400 border border-amber-500/20' :
+                      'bg-blue-500/10 text-blue-400 border border-blue-500/20'
                     }`}>
                       {project.status}
                     </span>
@@ -81,7 +74,7 @@ function Portfolio({ backgroundProps }) {
           </table>
         </div>
         
-        <div className="lg:hidden grid grid-cols-1 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:hidden">
           {projects.map((project, index) => (
             <ProjectCard key={index} {...project} index={index} />
           ))}

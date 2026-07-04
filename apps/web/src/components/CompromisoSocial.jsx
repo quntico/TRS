@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Droplet, Heart, Users, Briefcase } from 'lucide-react';
 import ImpactPoint from './ImpactPoint';
+import LazyBackground from './LazyBackground';
 
 function CompromisoSocial({ backgroundProps }) {
   const impacts = [
@@ -13,16 +14,9 @@ function CompromisoSocial({ backgroundProps }) {
   
   return (
     <section id="sostenibilidad" className="relative py-24 bg-background text-foreground overflow-hidden">
-      {backgroundProps?.media_url && (
-        <div className="absolute inset-0 z-0 pointer-events-none" style={{ opacity: (backgroundProps.opacity ?? 100) / 100 }}>
-          {backgroundProps.media_type === 'video' ? (
-            <video src={backgroundProps.media_url} autoPlay loop muted playsInline className="w-full h-full object-cover" />
-          ) : (
-            <img src={backgroundProps.media_url} alt="Background" className="w-full h-full object-cover" />
-          )}
-          <div className="absolute inset-0 bg-background/85" />
-        </div>
-      )}
+      <LazyBackground backgroundProps={backgroundProps}>
+        <div className="absolute inset-0 bg-background/85" />
+      </LazyBackground>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div

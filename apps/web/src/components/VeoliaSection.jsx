@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { Users, Calendar } from 'lucide-react';
+import LazyBackground from './LazyBackground';
 
 function VeoliaSection({ backgroundProps }) {
   const [count1, setCount1] = useState(0);
@@ -17,16 +18,9 @@ function VeoliaSection({ backgroundProps }) {
   
   return (
     <section id="veolia" className="relative py-24 bg-zinc-100 text-zinc-900 overflow-hidden">
-      {backgroundProps?.media_url && (
-        <div className="absolute inset-0 z-0 pointer-events-none" style={{ opacity: (backgroundProps.opacity ?? 100) / 100 }}>
-          {backgroundProps.media_type === 'video' ? (
-            <video src={backgroundProps.media_url} autoPlay loop muted playsInline className="w-full h-full object-cover" />
-          ) : (
-            <img src={backgroundProps.media_url} alt="Background" className="w-full h-full object-cover" />
-          )}
-          <div className="absolute inset-0 bg-zinc-100/90" />
-        </div>
-      )}
+      <LazyBackground backgroundProps={backgroundProps}>
+        <div className="absolute inset-0 bg-zinc-100/90" />
+      </LazyBackground>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div

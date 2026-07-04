@@ -1,21 +1,14 @@
-
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Cpu, Zap, BarChart3, Shield, Wifi, Database } from 'lucide-react';
+import LazyBackground from './LazyBackground';
 
 function SmqSection({ backgroundProps }) {
   return (
     <section id="smq" className="relative py-24 bg-[#0a0a0a] overflow-hidden">
-      {backgroundProps?.media_url && (
-        <div className="absolute inset-0 z-0 pointer-events-none" style={{ opacity: (backgroundProps.opacity ?? 100) / 100 }}>
-          {backgroundProps.media_type === 'video' ? (
-            <video src={backgroundProps.media_url} autoPlay loop muted playsInline className="w-full h-full object-cover" />
-          ) : (
-            <img src={backgroundProps.media_url} alt="Background" className="w-full h-full object-cover" />
-          )}
-          <div className="absolute inset-0 bg-[#0a0a0a]/80" />
-        </div>
-      )}
+      <LazyBackground backgroundProps={backgroundProps}>
+        <div className="absolute inset-0 bg-[#0a0a0a]/80" />
+      </LazyBackground>
       
       {!backgroundProps?.media_url && (
         <div className="absolute inset-0 opacity-10" style={{
@@ -58,7 +51,9 @@ function SmqSection({ backgroundProps }) {
               <li className="flex items-start gap-3"><Cpu className="w-5 h-5 mt-1" style={{ color: '#0074FF' }} /><span className="text-gray-300">Integración SCADA en tiempo real</span></li>
               <li className="flex items-start gap-3"><BarChart3 className="w-5 h-5 mt-1" style={{ color: '#0074FF' }} /><span className="text-gray-300">Análisis de datos operativos</span></li>
               <li className="flex items-start gap-3"><Shield className="w-5 h-5 mt-1" style={{ color: '#0074FF' }} /><span className="text-gray-300">Trazabilidad completa</span></li>
-              <li className="flex items-start gap-3"><Wifi className="w-5 h-5 mt-1" style={{ color: '#0074FF' }} /><span className="text-gray-300">Conectividad IoT</span></li>
+              <li className="flex items-start gap-3"><Zap className="w-5 h-5 mt-1" style={{ color: '#0074FF' }} /><span className="text-gray-300">Eficiencia energética</span></li>
+              <li className="flex items-start gap-3"><Wifi className="w-5 h-5 mt-1" style={{ color: '#0074FF' }} /><span className="text-gray-300">Sensores IoT industriales</span></li>
+              <li className="flex items-start gap-3"><Database className="w-5 h-5 mt-1" style={{ color: '#0074FF' }} /><span className="text-gray-300">Gobierno de datos unificado</span></li>
             </ul>
           </motion.div>
         </div>

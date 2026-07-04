@@ -1,8 +1,8 @@
-
 import React from 'react';
 import { motion } from 'framer-motion';
 import { HeartHandshake, DollarSign, Award, FileCheck, Users } from 'lucide-react';
 import AllianceItem from './AllianceItem';
+import LazyBackground from './LazyBackground';
 
 function Alianzas({ backgroundProps }) {
   const alliances = [
@@ -15,16 +15,9 @@ function Alianzas({ backgroundProps }) {
   
   return (
     <section id="alianzas" className="relative py-24 bg-card overflow-hidden">
-      {backgroundProps?.media_url && (
-        <div className="absolute inset-0 z-0 pointer-events-none" style={{ opacity: (backgroundProps.opacity ?? 100) / 100 }}>
-          {backgroundProps.media_type === 'video' ? (
-            <video src={backgroundProps.media_url} autoPlay loop muted playsInline className="w-full h-full object-cover" />
-          ) : (
-            <img src={backgroundProps.media_url} alt="Background" className="w-full h-full object-cover" />
-          )}
-          <div className="absolute inset-0 bg-card/85" />
-        </div>
-      )}
+      <LazyBackground backgroundProps={backgroundProps}>
+        <div className="absolute inset-0 bg-card/85" />
+      </LazyBackground>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
@@ -35,7 +28,7 @@ function Alianzas({ backgroundProps }) {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            Alianzas <span className="text-primary">Estratégicas</span>
+            Alianzas <span className="text-primary">Estrategicas</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
             Colaboraciones con organizaciones líderes a nivel nacional e internacional.
