@@ -12,9 +12,9 @@ function Contacto({ backgroundProps }) {
   ];
   
   return (
-    <section id="contacto" className="relative py-24 bg-zinc-100 text-zinc-900 overflow-hidden">
+    <section id="contacto" className="relative py-24 bg-zinc-200 text-zinc-900 overflow-hidden">
       <LazyBackground backgroundProps={backgroundProps}>
-        <div className="absolute inset-0 bg-zinc-100/90" />
+        <div className="absolute inset-0 bg-zinc-200/90" />
       </LazyBackground>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -35,7 +35,7 @@ function Contacto({ backgroundProps }) {
           ))}
         </div>
         
-        <motion.div className="max-w-3xl mx-auto bg-white rounded-2xl p-8 md:p-12 border-l-4 border-primary shadow-xl">
+        <motion.div className="max-w-3xl mx-auto bg-white rounded-2xl p-8 md:p-12 border-l-4 border-primary shadow-xl border border-zinc-300/40">
           <h3 className="text-2xl font-bold mb-2 text-zinc-900">Envíanos un mensaje</h3>
           <p className="text-zinc-600 mb-8">Completa el formulario y nos pondremos en contacto contigo a la brevedad.</p>
           <ContactForm />

@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Building2, Mail, Phone } from 'lucide-react';
+import { MapPin, Mail, Phone } from 'lucide-react';
 
 function OfficeCard({ name, address, email, phone, index }) {
   return (
@@ -9,37 +9,37 @@ function OfficeCard({ name, address, email, phone, index }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
-      className="bg-white text-zinc-900 rounded-xl p-8 border-l-4 border-primary hover:shadow-xl transition-all duration-300 shadow-sm"
+      className="bg-white text-zinc-900 rounded-2xl p-8 border border-zinc-300/60 hover:border-primary/50 hover:shadow-xl transition-all duration-300 shadow-md flex flex-col justify-between"
     >
-      <div className="flex items-start gap-4 mb-6">
-        <div className="p-3 bg-primary/10 rounded-lg">
-          <Building2 className="w-6 h-6 text-primary" />
+      <div>
+        <h3 className="text-xl font-bold mb-6 text-zinc-900 border-b border-zinc-100 pb-3">{name}</h3>
+        
+        <div className="space-y-4">
+          <div className="flex items-start gap-3">
+            <MapPin className="w-5 h-5 text-primary mt-0.5 shrink-0" />
+            <span className="text-zinc-600 leading-relaxed">{address}</span>
+          </div>
+          
+          {email && (
+            <a 
+              href={`mailto:${email}`}
+              className="flex items-center gap-3 text-zinc-700 hover:text-primary transition-colors duration-200 group/link"
+            >
+              <Mail className="w-5 h-5 text-primary shrink-0" />
+              <span className="break-all">{email}</span>
+            </a>
+          )}
+          
+          {phone && (
+            <a 
+              href={`tel:${phone}`}
+              className="flex items-center gap-3 text-zinc-700 hover:text-primary transition-colors duration-200"
+            >
+              <Phone className="w-5 h-5 text-primary shrink-0" />
+              <span>{phone}</span>
+            </a>
+          )}
         </div>
-        <div>
-          <h3 className="text-xl font-bold mb-2 text-zinc-900">{name}</h3>
-          <p className="text-zinc-600 leading-relaxed">{address}</p>
-        </div>
-      </div>
-      
-      <div className="space-y-3">
-        {email && (
-          <a 
-            href={`mailto:${email}`}
-            className="flex items-center gap-3 text-zinc-700 hover:text-primary transition-colors duration-200"
-          >
-            <Mail className="w-5 h-5" />
-            <span>{email}</span>
-          </a>
-        )}
-        {phone && (
-          <a 
-            href={`tel:${phone}`}
-            className="flex items-center gap-3 text-zinc-700 hover:text-primary transition-colors duration-200"
-          >
-            <Phone className="w-5 h-5" />
-            <span>{phone}</span>
-          </a>
-        )}
       </div>
     </motion.div>
   );

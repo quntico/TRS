@@ -17,9 +17,9 @@ function VeoliaSection({ backgroundProps }) {
   }, [isInView]);
   
   return (
-    <section id="veolia" className="relative py-24 bg-zinc-100 text-zinc-900 overflow-hidden">
+    <section id="veolia" className="relative py-24 bg-zinc-200 text-zinc-900 overflow-hidden">
       <LazyBackground backgroundProps={backgroundProps}>
-        <div className="absolute inset-0 bg-zinc-100/90" />
+        <div className="absolute inset-0 bg-zinc-200/90" />
       </LazyBackground>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
