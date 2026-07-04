@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Droplet, Heart, Users, Briefcase } from 'lucide-react';
@@ -13,7 +12,7 @@ function CompromisoSocial({ backgroundProps }) {
   ];
   
   return (
-    <section id="sostenibilidad" className="relative py-24 bg-white text-black overflow-hidden">
+    <section id="sostenibilidad" className="relative py-24 bg-background text-foreground overflow-hidden">
       {backgroundProps?.media_url && (
         <div className="absolute inset-0 z-0 pointer-events-none" style={{ opacity: (backgroundProps.opacity ?? 100) / 100 }}>
           {backgroundProps.media_type === 'video' ? (
@@ -21,7 +20,7 @@ function CompromisoSocial({ backgroundProps }) {
           ) : (
             <img src={backgroundProps.media_url} alt="Background" className="w-full h-full object-cover" />
           )}
-          <div className="absolute inset-0 bg-white/90" />
+          <div className="absolute inset-0 bg-background/85" />
         </div>
       )}
 
@@ -36,7 +35,7 @@ function CompromisoSocial({ backgroundProps }) {
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
             Compromiso Social y <span className="text-primary">Ambiental</span>
           </h2>
-          <p className="text-lg text-gray-700 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-lg text-gray-300 max-w-3xl mx-auto leading-relaxed">
             Nuestro impacto va más allá de la gestión de residuos. Generamos valor compartido con las comunidades donde operamos.
           </p>
         </motion.div>

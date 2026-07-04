@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -50,7 +49,7 @@ function ContactForm() {
     <form onSubmit={handleSubmit} className="space-y-6">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div>
-          <Label htmlFor="nombre" className="text-black mb-2 block">Nombre *</Label>
+          <Label htmlFor="nombre" className="text-white mb-2 block font-medium">Nombre *</Label>
           <Input
             id="nombre"
             name="nombre"
@@ -58,20 +57,20 @@ function ContactForm() {
             required
             value={formData.nombre}
             onChange={handleChange}
-            className="bg-white border-gray-300 text-black placeholder:text-gray-400"
+            className="bg-background border-border text-white placeholder:text-gray-500 focus-visible:ring-primary"
             placeholder="Tu nombre completo"
           />
         </div>
         
         <div>
-          <Label htmlFor="empresa" className="text-black mb-2 block">Empresa</Label>
+          <Label htmlFor="empresa" className="text-white mb-2 block font-medium">Empresa</Label>
           <Input
             id="empresa"
             name="empresa"
             type="text"
             value={formData.empresa}
             onChange={handleChange}
-            className="bg-white border-gray-300 text-black placeholder:text-gray-400"
+            className="bg-background border-border text-white placeholder:text-gray-500 focus-visible:ring-primary"
             placeholder="Nombre de tu empresa"
           />
         </div>
@@ -79,7 +78,7 @@ function ContactForm() {
       
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div>
-          <Label htmlFor="correo" className="text-black mb-2 block">Correo electrónico *</Label>
+          <Label htmlFor="correo" className="text-white mb-2 block font-medium">Correo electrónico *</Label>
           <Input
             id="correo"
             name="correo"
@@ -87,27 +86,27 @@ function ContactForm() {
             required
             value={formData.correo}
             onChange={handleChange}
-            className="bg-white border-gray-300 text-black placeholder:text-gray-400"
+            className="bg-background border-border text-white placeholder:text-gray-500 focus-visible:ring-primary"
             placeholder="tu@email.com"
           />
         </div>
         
         <div>
-          <Label htmlFor="telefono" className="text-black mb-2 block">Teléfono</Label>
+          <Label htmlFor="telefono" className="text-white mb-2 block font-medium">Teléfono</Label>
           <Input
             id="telefono"
             name="telefono"
             type="tel"
             value={formData.telefono}
             onChange={handleChange}
-            className="bg-white border-gray-300 text-black placeholder:text-gray-400"
+            className="bg-background border-border text-white placeholder:text-gray-500 focus-visible:ring-primary"
             placeholder="+52 55 1234 5678"
           />
         </div>
       </div>
       
       <div>
-        <Label htmlFor="mensaje" className="text-black mb-2 block">Mensaje *</Label>
+        <Label htmlFor="mensaje" className="text-white mb-2 block font-medium">Mensaje *</Label>
         <Textarea
           id="mensaje"
           name="mensaje"
@@ -115,7 +114,7 @@ function ContactForm() {
           value={formData.mensaje}
           onChange={handleChange}
           rows={6}
-          className="bg-white border-gray-300 text-black placeholder:text-gray-400 resize-none"
+          className="bg-background border-border text-white placeholder:text-gray-500 focus-visible:ring-primary resize-none"
           placeholder="Cuéntanos sobre tu proyecto o consulta..."
         />
       </div>
