@@ -49,7 +49,7 @@ function ContactForm() {
     <form onSubmit={handleSubmit} className="space-y-6">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div>
-          <Label htmlFor="nombre" className="text-white mb-2 block font-medium">Nombre *</Label>
+          <Label htmlFor="nombre" className="text-zinc-900 mb-2 block font-medium">Nombre *</Label>
           <Input
             id="nombre"
             name="nombre"
@@ -57,20 +57,20 @@ function ContactForm() {
             required
             value={formData.nombre}
             onChange={handleChange}
-            className="bg-background border-border text-white placeholder:text-gray-500 focus-visible:ring-primary"
+            className="bg-white border-zinc-300 text-zinc-900 placeholder:text-zinc-400 focus-visible:ring-primary"
             placeholder="Tu nombre completo"
           />
         </div>
         
         <div>
-          <Label htmlFor="empresa" className="text-white mb-2 block font-medium">Empresa</Label>
+          <Label htmlFor="empresa" className="text-zinc-900 mb-2 block font-medium">Empresa</Label>
           <Input
             id="empresa"
             name="empresa"
             type="text"
             value={formData.empresa}
             onChange={handleChange}
-            className="bg-background border-border text-white placeholder:text-gray-500 focus-visible:ring-primary"
+            className="bg-white border-zinc-300 text-zinc-900 placeholder:text-zinc-400 focus-visible:ring-primary"
             placeholder="Nombre de tu empresa"
           />
         </div>
@@ -78,7 +78,7 @@ function ContactForm() {
       
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div>
-          <Label htmlFor="correo" className="text-white mb-2 block font-medium">Correo electrónico *</Label>
+          <Label htmlFor="correo" className="text-zinc-900 mb-2 block font-medium">Correo electrónico *</Label>
           <Input
             id="correo"
             name="correo"
@@ -86,27 +86,27 @@ function ContactForm() {
             required
             value={formData.correo}
             onChange={handleChange}
-            className="bg-background border-border text-white placeholder:text-gray-500 focus-visible:ring-primary"
+            className="bg-white border-zinc-300 text-zinc-900 placeholder:text-zinc-400 focus-visible:ring-primary"
             placeholder="tu@email.com"
           />
         </div>
         
         <div>
-          <Label htmlFor="telefono" className="text-white mb-2 block font-medium">Teléfono</Label>
+          <Label htmlFor="telefono" className="text-zinc-900 mb-2 block font-medium">Teléfono</Label>
           <Input
             id="telefono"
             name="telefono"
             type="tel"
             value={formData.telefono}
             onChange={handleChange}
-            className="bg-background border-border text-white placeholder:text-gray-500 focus-visible:ring-primary"
+            className="bg-white border-zinc-300 text-zinc-900 placeholder:text-zinc-400 focus-visible:ring-primary"
             placeholder="+52 55 1234 5678"
           />
         </div>
       </div>
       
       <div>
-        <Label htmlFor="mensaje" className="text-white mb-2 block font-medium">Mensaje *</Label>
+        <Label htmlFor="mensaje" className="text-zinc-900 mb-2 block font-medium">Mensaje *</Label>
         <Textarea
           id="mensaje"
           name="mensaje"
@@ -114,7 +114,7 @@ function ContactForm() {
           value={formData.mensaje}
           onChange={handleChange}
           rows={6}
-          className="bg-background border-border text-white placeholder:text-gray-500 focus-visible:ring-primary resize-none"
+          className="bg-white border-zinc-300 text-zinc-900 placeholder:text-zinc-400 focus-visible:ring-primary resize-none"
           placeholder="Cuéntanos sobre tu proyecto o consulta..."
         />
       </div>

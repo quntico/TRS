@@ -16,7 +16,7 @@ function VeoliaSection({ backgroundProps }) {
   }, [isInView]);
   
   return (
-    <section id="veolia" className="relative py-24 bg-background text-foreground overflow-hidden">
+    <section id="veolia" className="relative py-24 bg-zinc-100 text-zinc-900 overflow-hidden">
       {backgroundProps?.media_url && (
         <div className="absolute inset-0 z-0 pointer-events-none" style={{ opacity: (backgroundProps.opacity ?? 100) / 100 }}>
           {backgroundProps.media_type === 'video' ? (
@@ -24,7 +24,7 @@ function VeoliaSection({ backgroundProps }) {
           ) : (
             <img src={backgroundProps.media_url} alt="Background" className="w-full h-full object-cover" />
           )}
-          <div className="absolute inset-0 bg-background/85" />
+          <div className="absolute inset-0 bg-zinc-100/90" />
         </div>
       )}
 
@@ -36,7 +36,7 @@ function VeoliaSection({ backgroundProps }) {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-zinc-900">
             Adquisición <span style={{ color: '#E30613' }}>VEOLIA México</span>
           </h2>
         </motion.div>
@@ -48,28 +48,28 @@ function VeoliaSection({ backgroundProps }) {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <p className="text-lg text-gray-300 leading-relaxed mb-6">
+            <p className="text-lg text-zinc-700 leading-relaxed mb-6">
               En enero de 2026, Grupo TRS adquirió la división de reciclaje de VEOLIA en México, consolidando nuestra posición.
             </p>
-            <p className="text-lg text-gray-300 leading-relaxed mb-6">
+            <p className="text-lg text-zinc-700 leading-relaxed mb-6">
               Esta adquisición estratégica incorpora más de 250 colaboradores especializados y estándares de clase mundial.
             </p>
-            <p className="text-lg text-gray-300 leading-relaxed">
+            <p className="text-lg text-zinc-700 leading-relaxed">
               Fortalecemos nuestra capacidad operativa y expandimos nuestra cobertura nacional.
             </p>
           </motion.div>
           
           <div ref={ref} className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <motion.div className="bg-card border-2 border-border rounded-2xl p-8 text-center hover:border-[#E30613] transition-all">
+            <motion.div className="bg-white border-2 border-zinc-200 rounded-2xl p-8 text-center hover:border-[#E30613] transition-all shadow-sm">
               <Users className="w-12 h-12 mx-auto mb-4" style={{ color: '#E30613' }} />
               <div className="text-5xl font-bold mb-2" style={{ color: '#E30613' }}>{count1}+</div>
-              <div className="text-gray-300 font-medium">Colaboradores especializados</div>
+              <div className="text-zinc-600 font-medium">Colaboradores especializados</div>
             </motion.div>
             
-            <motion.div className="bg-card border-2 border-border rounded-2xl p-8 text-center hover:border-[#E30613] transition-all">
+            <motion.div className="bg-white border-2 border-zinc-200 rounded-2xl p-8 text-center hover:border-[#E30613] transition-all shadow-sm">
               <Calendar className="w-12 h-12 mx-auto mb-4" style={{ color: '#E30613' }} />
               <div className="text-5xl font-bold mb-2" style={{ color: '#E30613' }}>{count2}</div>
-              <div className="text-gray-300 font-medium">Año de adquisición</div>
+              <div className="text-zinc-600 font-medium">Año de adquisición</div>
             </motion.div>
           </div>
         </div>
